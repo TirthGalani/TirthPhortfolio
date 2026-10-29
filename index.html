@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirth - Full-Stack Web & Python Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+        html {
+            scroll-padding-top: 5rem; /* Accounts for sticky navbar */
+        }
+        
+        /* Custom Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Nav link hover effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #2dd4bf; /* Teal 400 */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-teal-500 selection:text-white bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-[#0f172a] to-slate-900 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 top-0 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-500">
+                        Tirth.
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#skills" class="nav-link text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="nav-link text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact" class="nav-link text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button (visual only for this demo) -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="showMessage('Menu', 'Mobile menu expansion would go here!')" class="text-slate-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
+        <!-- Decorative Background Blurs for Premium Feel -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none fade-in-up delay-100"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl mix-blend-screen pointer-events-none fade-in-up delay-200"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <p class="text-teal-400 font-medium mb-4 tracking-wide fade-in-up uppercase text-sm tracking-widest">Welcome to my portfolio</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 fade-in-up delay-100 tracking-tight">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-400 to-indigo-500 drop-shadow-sm">Tirth</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-slate-400 mb-8 font-light fade-in-up delay-200">
+                Full-Stack Web & Python Developer
+            </h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up delay-300">
+                <a href="#projects" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-semibold rounded-lg text-white bg-gradient-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(45,212,191,0.4)] hover:-translate-y-0.5">
+                    View My Work
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-700 text-base font-medium rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-all hover:-translate-y-0.5 hover:border-slate-600 shadow-sm">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-850 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center">
+                <span class="w-8 h-1 bg-teal-500 mr-4 rounded-full"></span> About Me
+            </h2>
+            <div class="bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-800">
+                <p class="text-lg leading-relaxed text-slate-300">
+                    I am a Full-Stack Developer specializing in Python, React, Node.js, and AI integrations. From building automated document digitization pipelines to full-stack clinic management systems, I focus on scalable architecture and seamless user experiences. I am currently seeking remote software engineering opportunities where I can leverage my diverse skill set to solve complex technical problems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-end text-right">
+                Tech Stack <span class="w-8 h-1 bg-indigo-500 ml-4 rounded-full"></span>
+            </h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- Skill Tags -->
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Python</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">JavaScript</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">TypeScript</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">React</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Node.js</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Express</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">FastAPI</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">MongoDB</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Tailwind CSS</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-teal-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">PHP</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-indigo-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Google Gemini API</span>
+                <span class="px-5 py-2.5 bg-slate-800 border border-slate-700 text-indigo-300 rounded-full text-sm font-medium hover:bg-slate-700 hover:scale-105 transition-all cursor-default shadow-sm">Prompt Engineering</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-850 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 flex items-center justify-center">
+                <span class="w-12 h-1 bg-gradient-to-r from-teal-400 to-indigo-500 rounded-full mr-4"></span>
+                Featured Projects
+                <span class="w-12 h-1 bg-gradient-to-r from-indigo-500 to-teal-400 rounded-full ml-4"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition-colors duration-300 group flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+                        <div class="text-indigo-400 opacity-50 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Zarni Clinic Management</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            A MERN stack medical appointment booking application featuring robust admin panels, secure authentication, and optimized image hosting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs font-semibold text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">React</span>
+                            <span class="text-xs font-semibold text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <button onclick="showMessage('Zarni Clinic Details', 'Features include: Multi-role authentication, dynamic appointment scheduling, Cloudinary image upload integration, and a responsive Vite/React frontend dashboard.')" class="w-full py-2.5 bg-slate-800 hover:bg-indigo-600 text-white rounded-lg transition-colors font-medium text-sm">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-teal-500/50 transition-colors duration-300 group flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+                        <div class="text-teal-400 opacity-50 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">SmartExam AI Pipeline</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            Automated document extraction pipeline processing complex NEET/JEE exam PDFs. Extracts and formats LaTeX mathematical equations into structured templates.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold text-teal-300 bg-teal-900/30 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs font-semibold text-teal-300 bg-teal-900/30 px-2 py-1 rounded">FastAPI</span>
+                            <span class="text-xs font-semibold text-teal-300 bg-teal-900/30 px-2 py-1 rounded">Gemini AI</span>
+                        </div>
+                        <button onclick="showMessage('SmartExam AI Pipeline', 'Built with PyMuPDF for rendering, OpenPyXL for data structuring, and Google Gemini Multimodal API for highly accurate optical character recognition of advanced mathematics.')" class="w-full py-2.5 bg-slate-800 hover:bg-teal-600 text-white rounded-lg transition-colors font-medium text-sm">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-colors duration-300 group flex flex-col h-full shadow-lg">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+                        <div class="text-blue-400 opacity-50 group-hover:scale-110 transition-transform duration-500">
+                            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Environmental AI Monitor</h3>
+                        <p class="text-slate-400 text-sm mb-4 flex-grow">
+                            A sleek frontend layout for an environmental monitoring platform featuring secure login workflows and responsive dashboard components.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-900/30 px-2 py-1 rounded">HTML5/CSS3</span>
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-900/30 px-2 py-1 rounded">JavaScript</span>
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-900/30 px-2 py-1 rounded">Firebase Auth</span>
+                        </div>
+                        <button onclick="showMessage('Environmental Monitor', 'Focuses on responsive design principles, custom CSS architecture, and seamless integration with Firebase for secure, real-time user session management.')" class="w-full py-2.5 bg-slate-800 hover:bg-blue-600 text-white rounded-lg transition-colors font-medium text-sm">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Connect</h2>
+                <p class="text-slate-400">Open for opportunities. Send me a message and I'll respond as soon as possible.</p>
+            </div>
+
+            <div class="bg-slate-900 p-8 md:p-10 rounded-2xl shadow-xl border border-slate-800">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                            <input type="text" id="name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all placeholder-slate-500" placeholder="Jane Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                            <input type="email" id="email" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all placeholder-slate-500" placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                        <textarea id="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all placeholder-slate-500 resize-none" placeholder="How can I help you?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 text-white font-bold py-3.5 px-4 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+
+                <div class="mt-10 pt-8 border-t border-slate-800 flex justify-center gap-6">
+                    <button onclick="showMessage('GitHub', 'Redirecting to github.com/tirth-dev (Placeholder)')" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <button onclick="showMessage('LinkedIn', 'Redirecting to linkedin.com/in/tirth-dev (Placeholder)')" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                        <svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center">
+        <p class="text-slate-500 text-sm">© 2026 Tirth. Built with HTML, JS, and Tailwind CSS.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919737137156" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] hover:-translate-y-1 transition-all duration-300 group flex items-center justify-center"
+       aria-label="Message on WhatsApp">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="absolute right-16 bg-slate-800 text-slate-100 text-sm font-medium py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-slate-700 shadow-lg">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+    <!-- Custom Modal/Message Box (Replaces standard alerts) -->
+    <div id="customModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center z-50 opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-slate-700 transform scale-95 transition-transform duration-300" id="modalContent">
+            <h3 id="modalTitle" class="text-2xl font-bold text-white mb-4">Notice</h3>
+            <p id="modalMessage" class="text-slate-300 mb-8 leading-relaxed">Message text goes here.</p>
+            <div class="flex justify-end">
+                <button onclick="closeMessage()" class="bg-teal-500 hover:bg-teal-400 text-white font-medium px-6 py-2.5 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+                    Got it
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Custom Modal Logic to avoid intrusive alert() boxes
+        const modal = document.getElementById('customModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+
+        function showMessage(title, message) {
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+            
+            modal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeMessage() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Handle Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents page reload
+            
+            // Trigger visual success message
+            showMessage(
+                'Success!', 
+                'Thanks for reaching out! Tirth will get back to you shortly.'
+            );
+            
+            // Reset the form fields
+            this.reset();
+        });
+    </script>
+</body>
+</html>
